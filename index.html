@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>UwU Café ☕🐾</title>
+
+<style>
+  body { 
+    /* Fondo Rosa con Patrón de Huellas Negras */
+    background-color: #ffe4ec;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 100 100'%3E%3Cpath d='M30.5,45.3c3.4,0,6.2-4.1,6.2-9.1s-2.8-9.1-6.2-9.1s-6.2,4.1-6.2,9.1S27.1,45.3,30.5,45.3z M43.4,30.9c3.4,0,6.2-4.1,6.2-9.1 s-2.8-9.1-6.2-9.1s-6.2,4.1-6.2,9.1S40,30.9,43.4,30.9z M57,30.9c3.4,0,6.2-4.1,6.2-9.1s-2.8-9.1-6.2-9.1c-3.4,0-6.2,4.1-6.2,9.1 S53.5,30.9,57,30.9z M69.5,45.3c3.4,0,6.2-4.1,6.2-9.1s-2.8-9.1-6.2-9.1s-6.2,4.1-6.2,9.1S66.1,45.3,69.5,45.3z M50,48.7 c-10.7,0-19.4,8.3-19.4,18.5c0,5.2,2.3,9.8,6,13c2.4,2.1,5.1,3.8,8.1,4.8c1.7,0.6,3.5,0.9,5.3,0.9c1.8,0,3.6-0.3,5.3-0.9 c3-1,5.7-2.7,8.1-4.8c3.7-3.2,6-7.8,6-13C69.4,57,60.7,48.7,50,48.7z' fill='%23332222' fill-opacity='0.15'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .container { 
+    max-width: 500px; 
+    margin: 20px auto; 
+    background: rgba(255, 255, 255, 0.98); 
+    padding: 30px; 
+    border-radius: 30px; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2); 
+    border: 2px solid #ffccd5;
+  }
+
+  h1 { text-align: center; color: #ff69b4; font-size: 32px; margin-bottom: 5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
+  
+  label { font-weight: bold; color: #4a332d; display: block; margin-top: 15px; font-size: 15px; }
+  
+  input, select, textarea { 
+    width: 100%; 
+    padding: 12px; 
+    margin-top: 6px; 
+    margin-bottom: 10px; 
+    border-radius: 15px; 
+    border: 1.5px solid #ffccd5; 
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #ff69b4;
+    background-color: #fff9fb;
+  }
+  
+  /* Estilo del "Ticket" de pedido */
+  #resumenContenedor { margin-top: 15px; }
+  #listaVisual { 
+    background: #fffafa; 
+    border-radius: 15px; 
+    padding: 15px; 
+    margin-bottom: 15px; 
+    border: 2px dashed #ffb6c1; 
+  }
+  
+  .item-pedido { 
+    font-size: 14px; 
+    margin-bottom: 8px; 
+    color: #8b435c; 
+    border-bottom: 1px solid #ffe4ec; 
+    padding-bottom: 5px; 
+    display: flex;
+    justify-content: space-between;
+  }
+
+  button { 
+    width: 100%; 
+    color: white; 
+    padding: 15px; 
+    border: none; 
+    border-radius: 25px; 
+    font-size: 16px; 
+    font-weight: bold;
+    cursor: pointer; 
+    transition: all 0.3s ease;
+  }
+
+  .btn-add { background: #d87093; margin-top: 5px; }
+  .btn-add:hover { background: #c1567a; transform: scale(1.02); }
+
+  .btn-submit { 
+    background: #ff69b4; 
+    margin-top: 25px; 
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4); 
+    font-size: 18px;
+  }
+  .btn-submit:hover { background: #ff4da6; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6); }
+
+  .footer { text-align: center; font-size: 12px; color: #8b435c; margin-top: 25px; font-weight: bold; }
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div style="text-align:center;">
+    <img src="logo.png" alt="UwU Café Logo" style="width:130px;">
+    <h1>UwU Café</h1>
+    <p style="color: #d87093; font-weight: bold; margin-top: 0;">Pedidos para negocios RP 🥤🐾</p>
+  </div>
+
+  <label>🏪 Negocio</label>
+  <input type="text" id="negocio" placeholder="Nombre de tu negocio" required>
+
+  <hr style="border: 0.5px solid #ffe4ec; margin: 20px 0;">
+
+  <label>📦 Selecciona Producto</label>
+  <select id="producto">
+    <optgroup label="🧁 Comida">
+      <option>Cupcake de Fresa - 30$</option>
+      <option>Cupcake de Limón - 30$</option>
+      <option>Muffin de Chocolate - 30$</option>
+      <option>Gofre con Nutella - 25$</option>
+      <option>Crep con Nutella - 25$</option>
+      <option>Mochis - 20$</option>
+      <option>Helado de Fresa - 15$</option>
+    </optgroup>
+    <optgroup label="🧋 Bebidas">
+      <option>Capuchino de Caramelo - 17$</option>
+      <option>Capuchino de Fresa - 17$</option>
+      <option>Capuchino de Pistacho - 17$</option>
+      <option>Capuchino de Chocolate - 17$</option>
+      <option>Capuchino de Vainilla - 17$</option>
+      <option>Batido de Mora - 16$</option>
+      <option>Batido de Menta - 16$</option>
+      <option>Batido de Fresa - 16$</option>
+      <option>Té Boba - 20$</option>
+    </optgroup>
+    <optgroup label="🌟 Exclusivos">
+        <option>Remune de Melocotón - 25$</option>
+        <option>Batido de Gominola - 25$</option>
+        <option>Remune de Melón - 25$</option>
+      </optgroup>
+  </select>
+
+  <label>🔢 Cantidad</label>
+  <input type="number" id="cantidad" min="1" value="1">
+
+  <button type="button" class="btn-add" onclick="agregarAlCarrito()">➕ Añadir al pedido</button>
+
+  <div id="resumenContenedor" style="display:none;">
+    <label>🛒 Productos seleccionados:</label>
+    <div id="listaVisual"></div>
+  </div>
+
+  <label>📝 Notas RP</label>
+  <textarea id="notas" rows="3" placeholder="Ej: Entregar en el muelle, urgente..."></textarea>
+
+  <button type="button" class="btn-submit" onclick="enviarPedido()">Enviar pedido por Discord 💖</button>
+
+  <div class="footer">
+    UwU Café • Dishes & Desserts 🐾
+  </div>
+</div>
+
+<script>
+// Webhook URL
+const webhookURL = "https://discord.com/api/webhooks/1466423838408441918/aW5KVRVkat7Tb0-BhimAaius-_P7Cd57yxXSw5-a_l_Vl_ZviHU2sDipe47YKEQUEgXD";
+let carrito = [];
+
+function agregarAlCarrito() {
+  const prod = document.getElementById("producto").value;
+  const cant = document.getElementById("cantidad").value;
+  if(cant < 1) return alert("¡Pon una cantidad válida!");
+  
+  carrito.push({ producto: prod, cantidad: cant });
+  actualizarVista();
+  document.getElementById("cantidad").value = 1;
+}
+
+function actualizarVista() {
+  const contenedor = document.getElementById("resumenContenedor");
+  const listaDiv = document.getElementById("listaVisual");
+  contenedor.style.display = "block";
+  listaDiv.innerHTML = ""; 
+  carrito.forEach((item) => {
+    listaDiv.innerHTML += `
+      <div class="item-pedido">
+        <span>🐾 ${item.producto}</span>
+        <b>x${item.cantidad}</b>
+      </div>`;
+  });
+}
+
+function enviarPedido() {
+  const negocio = document.getElementById("negocio").value;
+  const notas = document.getElementById("notas").value || "Sin notas adicionales";
+  if(!negocio) return alert("¡Escribe el nombre del negocio!");
+  if(carrito.length === 0) return alert("¡Añade productos primero!");
+
+  let productosTexto = "";
+  carrito.forEach(item => {
+    productosTexto += `> 📦 **${item.cantidad}x** ${item.producto}\n`;
+  });
+
+  const data = {
+    embeds: [{
+      title: "🐾 NUEVO PEDIDO UwU CAFÉ 🐾",
+      color: 16738740, // Color rosa en formato decimal
+      fields: [
+        { name: "🏪 Negocio", value: negocio, inline: true },
+        { name: "📝 Notas", value: notas, inline: false },
+        { name: "📋 Detalle", value: productosTexto, inline: false }
+      ],
+      footer: { text: "UwU Café • Sistema de Pedidos RP" },
+      timestamp: new Date()
+    }]
+  };
+
+  fetch(webhookURL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  }).then(() => {
+    alert("¡Pedido enviado con éxito! 💕");
+    carrito = [];
+    document.getElementById("negocio").value = "";
+    document.getElementById("notas").value = "";
+    document.getElementById("resumenContenedor").style.display = "none";
+  });
+}
+</script>
+
+</body>
+</html>
